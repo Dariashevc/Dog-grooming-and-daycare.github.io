@@ -1,4 +1,10 @@
 <?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 /**
  * Happy Tails Dog Care — Reservation Email Handler
  *
@@ -186,11 +192,6 @@ $ownerSubject = "Your reservation is confirmed! 🐾 $petName at Happy Tails";
 if ($USE_PHPMAILER) {
 
     // ── PHPMailer via SMTP → maildev ──────────
-    require_once __DIR__ . '/vendor/autoload.php';
-
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-
     function sendWithMailer(
         string $toEmail, string $toName,
         string $subject, string $html,
