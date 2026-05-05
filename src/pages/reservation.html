@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,6 +24,7 @@
       padding: 2.5rem;
       box-shadow: var(--shadow-lg);
     }
+
     .form-section-title {
       font-family: 'Nunito', sans-serif;
       font-size: .75rem;
@@ -37,7 +39,11 @@
       align-items: center;
       gap: .6rem;
     }
-    .form-section-title:first-child { margin-top: 0; }
+
+    .form-section-title:first-child {
+      margin-top: 0;
+    }
+
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -51,10 +57,12 @@
       gap: .75rem;
       margin-top: .4rem;
     }
+
     .service-option {
       display: none;
     }
-    .service-option + label {
+
+    .service-option+label {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -70,17 +78,20 @@
       transition: all .2s var(--ease);
       background: var(--light-cream);
     }
-    .service-option + label .svc-icon {
+
+    .service-option+label .svc-icon {
       font-size: 1.6rem;
       line-height: 1;
     }
-    .service-option:checked + label {
+
+    .service-option:checked+label {
       border-color: var(--primary);
-      background: rgba(201,107,44,.07);
+      background: rgba(201, 107, 44, .07);
       color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(201,107,44,.15);
+      box-shadow: 0 0 0 3px rgba(201, 107, 44, .15);
     }
-    .service-option + label:hover {
+
+    .service-option+label:hover {
       border-color: var(--primary-light);
       background: var(--cream);
     }
@@ -96,10 +107,13 @@
       background: var(--light-cream);
       position: relative;
     }
-    .photo-upload:hover, .photo-upload.drag-over {
+
+    .photo-upload:hover,
+    .photo-upload.drag-over {
       border-color: var(--primary);
       background: var(--cream);
     }
+
     .photo-upload input[type="file"] {
       position: absolute;
       inset: 0;
@@ -108,27 +122,43 @@
       width: 100%;
       height: 100%;
     }
-    .photo-upload .upload-icon { font-size: 2.2rem; margin-bottom: .5rem; }
-    .photo-upload p { color: var(--text-medium); font-size: .9rem; font-weight: 600; }
-    .photo-upload small { color: var(--text-light); font-size: .8rem; }
+
+    .photo-upload .upload-icon {
+      font-size: 2.2rem;
+      margin-bottom: .5rem;
+    }
+
+    .photo-upload p {
+      color: var(--text-medium);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .photo-upload small {
+      color: var(--text-light);
+      font-size: .8rem;
+    }
+
     #photoPreview {
       display: none;
       margin-top: 1rem;
       position: relative;
     }
+
     #photoPreview img {
       width: 100%;
       max-height: 200px;
       object-fit: cover;
       border-radius: var(--r-md);
     }
+
     #photoPreview .remove-photo {
       position: absolute;
       top: .5rem;
       right: .5rem;
       width: 28px;
       height: 28px;
-      background: rgba(61,31,15,.7);
+      background: rgba(61, 31, 15, .7);
       color: #fff;
       border-radius: 50%;
       display: flex;
@@ -145,6 +175,7 @@
       padding-top: 1.5rem;
       border-top: 2px solid var(--cream);
     }
+
     .submit-btn {
       width: 100%;
       padding: 1.1rem;
@@ -163,37 +194,50 @@
       justify-content: center;
       gap: .6rem;
     }
+
     .submit-btn:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(201,107,44,.35);
+      box-shadow: 0 8px 32px rgba(201, 107, 44, .35);
     }
+
     .submit-btn:disabled {
       opacity: .6;
       cursor: not-allowed;
       transform: none;
     }
+
     .submit-note {
       text-align: center;
       margin-top: .75rem;
       font-size: .82rem;
       color: var(--text-light);
     }
-    .submit-note i { color: var(--primary); }
+
+    .submit-note i {
+      color: var(--primary);
+    }
 
     /* ── Sidebar ───────────────────────────── */
-    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
     .sidebar-card {
       background: #fff;
       border-radius: var(--r-xl);
       padding: 1.8rem;
       box-shadow: var(--shadow-md);
     }
+
     .sidebar-card h3 {
       font-size: 1rem;
       color: var(--dark-brown);
       margin-bottom: 1rem;
     }
+
     .info-list li {
       display: flex;
       align-items: center;
@@ -204,7 +248,11 @@
       color: var(--text-medium);
       font-weight: 600;
     }
-    .info-list li:last-child { border-bottom: none; }
+
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+
     .info-list .ic {
       width: 32px;
       height: 32px;
@@ -217,6 +265,7 @@
       flex-shrink: 0;
       color: var(--primary);
     }
+
     .price-list li {
       display: flex;
       justify-content: space-between;
@@ -225,9 +274,20 @@
       border-bottom: 1px solid var(--warm-sand);
       font-size: .88rem;
     }
-    .price-list li:last-child { border-bottom: none; }
-    .price-list .name { color: var(--text-medium); font-weight: 600; }
-    .price-list .price { color: var(--primary); font-weight: 800; }
+
+    .price-list li:last-child {
+      border-bottom: none;
+    }
+
+    .price-list .name {
+      color: var(--text-medium);
+      font-weight: 600;
+    }
+
+    .price-list .price {
+      color: var(--primary);
+      font-weight: 800;
+    }
 
     /* ── Success screen ────────────────────── */
     .success-screen {
@@ -235,59 +295,100 @@
       text-align: center;
       padding: 3rem 2rem;
     }
-    .success-screen.visible { display: block; }
+
+    .success-screen.visible {
+      display: block;
+    }
+
     .success-icon {
       font-size: 4rem;
       margin-bottom: 1.2rem;
       animation: popIn .5s var(--ease);
     }
+
     @keyframes popIn {
-      from { transform: scale(0); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
-    .success-screen h2 { color: var(--dark-brown); margin-bottom: .75rem; }
-    .success-screen p  { color: var(--text-medium); margin-bottom: 1.5rem; }
+
+    .success-screen h2 {
+      color: var(--dark-brown);
+      margin-bottom: .75rem;
+    }
+
+    .success-screen p {
+      color: var(--text-medium);
+      margin-bottom: 1.5rem;
+    }
 
     /* ── Responsive ────────────────────────── */
     @media (max-width: 900px) {
-      .reservation-layout { grid-template-columns: 1fr; }
-      .sidebar { order: -1; }
-      .sidebar-card { display: none; }
-      .sidebar-card:first-child { display: block; }
+      .reservation-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        order: -1;
+      }
+
+      .sidebar-card {
+        display: none;
+      }
+
+      .sidebar-card:first-child {
+        display: block;
+      }
     }
+
     @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-      .service-picker { grid-template-columns: repeat(2, 1fr); }
-      .form-card { padding: 1.5rem; }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .service-picker {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-card {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- ───────── NAVIGATION ───────── -->
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
-      <a href="../../index.html" class="nav-logo">
+      <a href="../index.html" class="nav-logo">
         <div class="logo-icon">🐾</div>
         <div class="logo-text">Happy Tails<span>Dog Care Centre</span></div>
       </a>
       <ul class="nav-links">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../../about.html">About Us</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About Us</a></li>
         <li class="nav-dropdown">
           <button class="nav-service-btn">Services <span class="chevron">▾</span></button>
           <ul class="dropdown-menu">
-            <li><a href="../../services.html#grooming"><span class="di">✂️</span>Grooming</a></li>
-            <li><a href="../../services.html#training"><span class="di">🎓</span>Training</a></li>
-            <li><a href="../../services.html#boarding"><span class="di">🏠</span>Boarding</a></li>
-            <li><a href="../../services.html#walking"><span class="di">🦮</span>Dog Walking</a></li>
-            <li><a href="../../services.html#daycare"><span class="di">☀️</span>Day Care</a></li>
-            <li><a href="../../services.html#puppy"><span class="di">🐶</span>Puppy Care</a></li>
+            <li><a href="../services.html#grooming"><span class="di">✂️</span>Grooming</a></li>
+            <li><a href="../services.html#training"><span class="di">🎓</span>Training</a></li>
+            <li><a href="../services.html#boarding"><span class="di">🏠</span>Boarding</a></li>
+            <li><a href="../services.html#walking"><span class="di">🦮</span>Dog Walking</a></li>
+            <li><a href="../services.html#daycare"><span class="di">☀️</span>Day Care</a></li>
+            <li><a href="../services.html#puppy"><span class="di">🐶</span>Puppy Care</a></li>
           </ul>
         </li>
         <li><a href="reservation.html" class="active">Reservation</a></li>
         <li><a href="testimonials.html">Testimonials</a></li>
-        <li><a href="../../contact.html">Contact Us</a></li>
+        <li><a href="../contact.html">Contact Us</a></li>
       </ul>
       <a href="reservation.html" class="btn btn-primary nav-cta">
         <i class="fa-solid fa-calendar-check"></i> Book Now
@@ -299,20 +400,20 @@
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="../../index.html">Home</a>
-    <a href="../../about.html">About Us</a>
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About Us</a>
     <button class="mobile-service-btn">Services <span class="chevron">▼</span></button>
     <div class="mobile-sub" style="display:none;">
-      <a href="../../services.html#grooming">✂️ Grooming</a>
-      <a href="../../services.html#training">🎓 Training</a>
-      <a href="../../services.html#boarding">🏠 Boarding</a>
-      <a href="../../services.html#walking">🦮 Dog Walking</a>
-      <a href="../../services.html#daycare">☀️ Day Care</a>
-      <a href="../../services.html#puppy">🐶 Puppy Care</a>
+      <a href="../services.html#grooming">✂️ Grooming</a>
+      <a href="../services.html#training">🎓 Training</a>
+      <a href="../services.html#boarding">🏠 Boarding</a>
+      <a href="../services.html#walking">🦮 Dog Walking</a>
+      <a href="../services.html#daycare">☀️ Day Care</a>
+      <a href="../services.html#puppy">🐶 Puppy Care</a>
     </div>
     <a href="reservation.html" class="active">Reservation</a>
     <a href="testimonials.html">Testimonials</a>
-    <a href="../../contact.html">Contact Us</a>
+    <a href="../contact.html">Contact Us</a>
     <a href="reservation.html" class="btn btn-primary">📅 Book Now</a>
   </div>
 
@@ -333,8 +434,9 @@
         <div class="success-screen" id="successScreen">
           <div class="success-icon">🎉</div>
           <h2>Reservation Received!</h2>
-          <p>Thank you, <strong id="successName"></strong>! We've received your booking request for <strong id="successPet"></strong> and sent a confirmation to your email. We'll be in touch shortly!</p>
-          <a href="../../index.html" class="btn btn-primary" style="margin:0 auto;">
+          <p>Thank you, <strong id="successName"></strong>! We've received your booking request for <strong
+              id="successPet"></strong> and sent a confirmation to your email. We'll be in touch shortly!</p>
+          <a href="../index.html" class="btn btn-primary" style="margin:0 auto;">
             <i class="fa-solid fa-house"></i> Back to Home
           </a>
         </div>
@@ -375,29 +477,44 @@
               <label>Preferred Time</label>
               <select class="form-control" name="time">
                 <option value="">Select a time</option>
-                <option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option>
-                <option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option>
-                <option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option>
-                <option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option>
+                <option>7:00 AM</option>
+                <option>8:00 AM</option>
+                <option>9:00 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>12:00 PM</option>
+                <option>1:00 PM</option>
+                <option>2:00 PM</option>
+                <option>3:00 PM</option>
+                <option>4:00 PM</option>
+                <option>5:00 PM</option>
+                <option>6:00 PM</option>
               </select>
             </div>
           </div>
 
-          <p class="form-section-title"><i class="fa-solid fa-scissors"></i> Choose a Service <span style="color:var(--primary)">*</span></p>
+          <p class="form-section-title"><i class="fa-solid fa-scissors"></i> Choose a Service <span
+              style="color:var(--primary)">*</span></p>
 
           <div class="service-picker">
             <div><input type="radio" class="service-option" name="service" id="svc1" value="Grooming & Spa" required>
-              <label for="svc1"><span class="svc-icon">✂️</span>Grooming & Spa</label></div>
+              <label for="svc1"><span class="svc-icon">✂️</span>Grooming & Spa</label>
+            </div>
             <div><input type="radio" class="service-option" name="service" id="svc2" value="Obedience Training">
-              <label for="svc2"><span class="svc-icon">🎓</span>Training</label></div>
+              <label for="svc2"><span class="svc-icon">🎓</span>Training</label>
+            </div>
             <div><input type="radio" class="service-option" name="service" id="svc3" value="Overnight Boarding">
-              <label for="svc3"><span class="svc-icon">🏠</span>Boarding</label></div>
+              <label for="svc3"><span class="svc-icon">🏠</span>Boarding</label>
+            </div>
             <div><input type="radio" class="service-option" name="service" id="svc4" value="Dog Walking">
-              <label for="svc4"><span class="svc-icon">🦮</span>Dog Walking</label></div>
+              <label for="svc4"><span class="svc-icon">🦮</span>Dog Walking</label>
+            </div>
             <div><input type="radio" class="service-option" name="service" id="svc5" value="Day Care">
-              <label for="svc5"><span class="svc-icon">☀️</span>Day Care</label></div>
+              <label for="svc5"><span class="svc-icon">☀️</span>Day Care</label>
+            </div>
             <div><input type="radio" class="service-option" name="service" id="svc6" value="Puppy Care">
-              <label for="svc6"><span class="svc-icon">🐶</span>Puppy Care</label></div>
+              <label for="svc6"><span class="svc-icon">🐶</span>Puppy Care</label>
+            </div>
           </div>
           <div id="serviceError" style="color:#c0392b;font-size:.82rem;margin-top:.4rem;display:none;">
             Please select a service.
@@ -443,15 +560,18 @@
 
           <div class="form-group">
             <label>Any Health Conditions or Special Notes</label>
-            <textarea class="form-control" name="healthNotes" placeholder="e.g. allergies, medication, anxiety, reactive to other dogs…" rows="3"></textarea>
+            <textarea class="form-control" name="healthNotes"
+              placeholder="e.g. allergies, medication, anxiety, reactive to other dogs…" rows="3"></textarea>
           </div>
 
           <div class="form-group">
             <label>Tell us more about your dog's personality</label>
-            <textarea class="form-control" name="personality" placeholder="e.g. loves to play fetch, shy at first, very energetic…" rows="3"></textarea>
+            <textarea class="form-control" name="personality"
+              placeholder="e.g. loves to play fetch, shy at first, very energetic…" rows="3"></textarea>
           </div>
 
-          <p class="form-section-title"><i class="fa-solid fa-image"></i> Photo of Your Dog <span style="color:var(--text-light);font-weight:400;font-size:.8rem;">(optional)</span></p>
+          <p class="form-section-title"><i class="fa-solid fa-image"></i> Photo of Your Dog <span
+              style="color:var(--text-light);font-weight:400;font-size:.8rem;">(optional)</span></p>
 
           <div class="photo-upload" id="photoUpload">
             <input type="file" id="photoInput" name="photo" accept="image/*" />
@@ -500,10 +620,12 @@
         </div>
         <div class="sidebar-card">
           <h3>📞 Need Help?</h3>
-          <p style="color:var(--text-medium);font-size:.9rem;margin-bottom:1rem;">Have questions before booking? We're happy to chat!</p>
-          <p style="font-weight:700;color:var(--dark-brown);margin-bottom:.3rem;"><i class="fa-solid fa-phone" style="color:var(--primary);margin-right:.4rem;"></i>(403) 555-0147</p>
+          <p style="color:var(--text-medium);font-size:.9rem;margin-bottom:1rem;">Have questions before booking? We're
+            happy to chat!</p>
+          <p style="font-weight:700;color:var(--dark-brown);margin-bottom:.3rem;"><i class="fa-solid fa-phone"
+              style="color:var(--primary);margin-right:.4rem;"></i>(403) 555-0147</p>
           <p style="font-size:.85rem;color:var(--text-light);">Mon–Fri 7am–7pm · Sat 8am–6pm</p>
-          <a href="../../contact.html" class="btn btn-outline" style="margin-top:1rem;width:100%;justify-content:center;">
+          <a href="../contact.html" class="btn btn-outline" style="margin-top:1rem;width:100%;justify-content:center;">
             <i class="fa-solid fa-envelope"></i> Send a Message
           </a>
         </div>
@@ -529,22 +651,22 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="../../services.html#grooming">Grooming & Spa</a></li>
-            <li><a href="../../services.html#training">Obedience Training</a></li>
-            <li><a href="../../services.html#boarding">Overnight Boarding</a></li>
-            <li><a href="../../services.html#walking">Dog Walking</a></li>
-            <li><a href="../../services.html#daycare">Day Care</a></li>
-            <li><a href="../../services.html#puppy">Puppy Care</a></li>
+            <li><a href="../services.html#grooming">Grooming & Spa</a></li>
+            <li><a href="../services.html#training">Obedience Training</a></li>
+            <li><a href="../services.html#boarding">Overnight Boarding</a></li>
+            <li><a href="../services.html#walking">Dog Walking</a></li>
+            <li><a href="../services.html#daycare">Day Care</a></li>
+            <li><a href="../services.html#puppy">Puppy Care</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="../../about.html">About Us</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About Us</a></li>
             <li><a href="reservation.html">Book a Service</a></li>
             <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="../../contact.html">Contact Us</a></li>
+            <li><a href="../contact.html">Contact Us</a></li>
           </ul>
         </div>
         <div class="footer-col footer-contact">
@@ -552,14 +674,15 @@
           <p><i class="fa-solid fa-location-dot"></i>123 Bow Trail SW, Calgary, AB T3C 2E8</p>
           <p><i class="fa-solid fa-phone"></i>(403) 555-0147</p>
           <p><i class="fa-solid fa-envelope"></i>hello@happytailscare.ca</p>
-          <a href="../../contact.html" class="btn btn-outline" style="margin-top:1rem;color:#fff;border-color:rgba(255,255,255,.3);">
+          <a href="../contact.html" class="btn btn-outline"
+            style="margin-top:1rem;color:#fff;border-color:rgba(255,255,255,.3);">
             <i class="fa-solid fa-paper-plane"></i> Send a Message
           </a>
         </div>
       </div>
       <div class="footer-bottom">
         <p>© 2025 Happy Tails Dog Care Centre. All rights reserved.</p>
-        <p>Made with ❤️ for dogs everywhere • <a href="../../contact.html">Contact Us</a></p>
+        <p>Made with ❤️ for dogs everywhere • <a href="../contact.html">Contact Us</a></p>
       </div>
     </div>
   </footer>
@@ -570,10 +693,10 @@
     document.querySelector('[name="date"]').min = new Date().toISOString().split('T')[0];
 
     // Photo upload preview
-    const photoInput  = document.getElementById('photoInput');
+    const photoInput = document.getElementById('photoInput');
     const photoUpload = document.getElementById('photoUpload');
     const photoPreview = document.getElementById('photoPreview');
-    const previewImg  = document.getElementById('previewImg');
+    const previewImg = document.getElementById('previewImg');
     const removePhoto = document.getElementById('removePhoto');
 
     photoInput.addEventListener('change', e => {
@@ -612,8 +735,8 @@
     });
 
     // ── Form submission ────────────────────────
-    const form       = document.getElementById('reservationForm');
-    const submitBtn  = document.getElementById('submitBtn');
+    const form = document.getElementById('reservationForm');
+    const submitBtn = document.getElementById('submitBtn');
     const successScr = document.getElementById('successScreen');
 
     form.addEventListener('submit', async e => {
@@ -655,7 +778,7 @@
 
       // Show success screen
       document.getElementById('successName').textContent = data.firstName + ' ' + data.lastName;
-      document.getElementById('successPet').textContent  = data.petName || 'your pup';
+      document.getElementById('successPet').textContent = data.petName || 'your pup';
       form.style.display = 'none';
       successScr.classList.add('visible');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -667,4 +790,5 @@
     });
   </script>
 </body>
+
 </html>

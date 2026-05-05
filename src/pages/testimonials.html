@@ -1,290 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testimonials — Happy Tails Dog Care</title>
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-
-    /* ── Page layout ───────────────────────── */
-    .testimonials-layout {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* ── Submit CTA ────────────────────────── */
-    .submit-cta {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: var(--r-xl);
-      padding: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-      box-shadow: var(--shadow-warm);
-    }
-    .submit-cta-text h3 { color: #fff; font-size: 1.3rem; margin-bottom: .35rem; }
-    .submit-cta-text p  { color: rgba(255,255,255,.8); font-size: .95rem; }
-
-    /* ── Filter tabs ───────────────────────── */
-    .filter-tabs {
-      display: flex;
-      gap: .5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      align-items: center;
-    }
-    .filter-tab {
-      padding: .5rem 1.1rem;
-      border-radius: var(--r-full);
-      font-weight: 700;
-      font-size: .85rem;
-      color: var(--text-medium);
-      background: var(--cream);
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: all .2s;
-    }
-    .filter-tab:hover { background: var(--warm-sand); }
-    .filter-tab.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-    .results-count {
-      margin-left: auto;
-      font-size: .85rem;
-      color: var(--text-light);
-      font-weight: 600;
-    }
-
-    /* ── Testimonial cards ─────────────────── */
-    #testimonialsGrid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .t-card {
-      background: #fff;
-      border-radius: var(--r-xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(201,107,44,.07);
-      transition: all .3s var(--ease);
-      position: relative;
-      animation: cardIn .5s var(--ease) both;
-    }
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .t-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-2px);
-    }
-    .t-card-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .t-avatar {
-      width: 54px;
-      height: 54px;
-      border-radius: var(--r-full);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: #fff;
-      flex-shrink: 0;
-      font-family: 'Playfair Display', serif;
-    }
-    .t-info { flex: 1; }
-    .t-name {
-      font-weight: 800;
-      color: var(--dark-brown);
-      font-size: 1rem;
-      margin-bottom: .15rem;
-    }
-    .t-meta {
-      font-size: .82rem;
-      color: var(--text-light);
-      font-weight: 600;
-    }
-    .t-meta span { color: var(--primary); font-weight: 700; }
-    .t-stars {
-      display: flex;
-      gap: 2px;
-      margin: .4rem 0;
-    }
-    .t-stars i { color: var(--accent); font-size: .95rem; }
-    .t-stars i.empty { color: var(--warm-tan); }
-    .t-service-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      background: var(--cream);
-      color: var(--primary);
-      font-size: .75rem;
-      font-weight: 800;
-      padding: .2em .75em;
-      border-radius: var(--r-full);
-      margin-bottom: .75rem;
-    }
-    .t-text {
-      color: var(--text-medium);
-      font-size: .95rem;
-      line-height: 1.75;
-      position: relative;
-    }
-    .t-text::before {
-      content: '\201C';
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      color: rgba(201,107,44,.1);
-      position: absolute;
-      top: -1rem;
-      left: -0.5rem;
-      line-height: 1;
-    }
-    .t-footer {
-      margin-top: 1.2rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--warm-sand);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .t-date { font-size: .82rem; color: var(--text-light); font-weight: 600; }
-    .t-actions { display: flex; gap: .5rem; }
-    .t-action-btn {
-      width: 32px; height: 32px;
-      border-radius: var(--r-full);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .8rem;
-      cursor: pointer;
-      transition: all .2s;
-      border: none;
-    }
-    .t-edit-btn { background: var(--cream); color: var(--primary); }
-    .t-edit-btn:hover { background: var(--primary); color: #fff; }
-    .t-del-btn  { background: rgba(192,57,43,.1); color: #c0392b; }
-    .t-del-btn:hover  { background: #c0392b; color: #fff; }
-    .t-own-tag {
-      background: rgba(201,107,44,.1);
-      color: var(--primary);
-      font-size: .73rem;
-      font-weight: 800;
-      padding: .2em .6em;
-      border-radius: var(--r-full);
-    }
-
-    /* ── Empty state ───────────────────────── */
-    .empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-    .empty-state .icon { font-size: 4rem; margin-bottom: 1rem; opacity: .5; }
-    .empty-state h3 { color: var(--dark-brown); margin-bottom: .5rem; }
-    .empty-state p  { color: var(--text-medium); }
-
-    /* ── Modal form ────────────────────────── */
-    .t-form-group { margin-bottom: 1.2rem; }
-    .t-form-group label { display: block; font-weight: 700; font-size: .88rem; color: var(--text-medium); margin-bottom: .4rem; }
-    .char-count { font-size: .78rem; color: var(--text-light); margin-top: .3rem; text-align: right; }
-    .modal-footer {
-      display: flex;
-      gap: .75rem;
-      margin-top: 1.5rem;
-      justify-content: flex-end;
-    }
-    .limit-notice {
-      background: rgba(232,168,56,.12);
-      border: 1px solid rgba(232,168,56,.35);
-      border-radius: var(--r-md);
-      padding: .8rem 1rem;
-      font-size: .85rem;
-      color: var(--medium-brown);
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-
-    /* ── Confirm delete dialog ─────────────── */
-    .confirm-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(61,31,15,.5);
-      backdrop-filter: blur(4px);
-      z-index: 3000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: all .25s;
-    }
-    .confirm-overlay.open { opacity: 1; visibility: visible; }
-    .confirm-box {
-      background: #fff;
-      border-radius: var(--r-xl);
-      padding: 2rem;
-      max-width: 360px;
-      width: 100%;
-      box-shadow: var(--shadow-lg);
-      text-align: center;
-      transform: scale(.92);
-      transition: all .25s var(--ease);
-    }
-    .confirm-overlay.open .confirm-box { transform: scale(1); }
-    .confirm-box .ci { font-size: 2.5rem; margin-bottom: .75rem; }
-    .confirm-box h3 { color: var(--dark-brown); margin-bottom: .4rem; }
-    .confirm-box p  { color: var(--text-medium); font-size: .9rem; margin-bottom: 1.5rem; }
-    .confirm-btns   { display: flex; gap: .75rem; justify-content: center; }
-
-    @media (max-width: 640px) {
-      .submit-cta { flex-direction: column; text-align: center; }
-      .t-card { padding: 1.4rem; }
-    }
-  </style>
 </head>
+
 <body>
 
   <!-- ───────── NAVIGATION ───────── -->
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
-      <a href="../../index.html" class="nav-logo">
+      <a href="../index.html" class="nav-logo">
         <div class="logo-icon">🐾</div>
         <div class="logo-text">Happy Tails<span>Dog Care Centre</span></div>
       </a>
       <ul class="nav-links">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../../about.html">About Us</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About Us</a></li>
         <li class="nav-dropdown">
           <button class="nav-service-btn">Services <span class="chevron">▾</span></button>
           <ul class="dropdown-menu">
-            <li><a href="../../services.html#grooming"><span class="di">✂️</span>Grooming</a></li>
-            <li><a href="../../services.html#training"><span class="di">🎓</span>Training</a></li>
-            <li><a href="../../services.html#boarding"><span class="di">🏠</span>Boarding</a></li>
-            <li><a href="../../services.html#walking"><span class="di">🦮</span>Dog Walking</a></li>
-            <li><a href="../../services.html#daycare"><span class="di">☀️</span>Day Care</a></li>
-            <li><a href="../../services.html#puppy"><span class="di">🐶</span>Puppy Care</a></li>
+            <li><a href="../services.html#grooming"><span class="di">✂️</span>Grooming</a></li>
+            <li><a href="../services.html#training"><span class="di">🎓</span>Training</a></li>
+            <li><a href="../services.html#boarding"><span class="di">🏠</span>Boarding</a></li>
+            <li><a href="../services.html#walking"><span class="di">🦮</span>Dog Walking</a></li>
+            <li><a href="../services.html#daycare"><span class="di">☀️</span>Day Care</a></li>
+            <li><a href="../services.html#puppy"><span class="di">🐶</span>Puppy Care</a></li>
           </ul>
         </li>
         <li><a href="reservation.html">Reservation</a></li>
         <li><a href="testimonials.html" class="active">Testimonials</a></li>
-        <li><a href="../../contact.html">Contact Us</a></li>
+        <li><a href="../contact.html">Contact Us</a></li>
       </ul>
       <a href="reservation.html" class="btn btn-primary nav-cta">
         <i class="fa-solid fa-calendar-check"></i> Book Now
@@ -296,20 +46,20 @@
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="../../index.html">Home</a>
-    <a href="../../about.html">About Us</a>
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About Us</a>
     <button class="mobile-service-btn">Services <span class="chevron">▼</span></button>
     <div class="mobile-sub" style="display:none;">
-      <a href="../../services.html#grooming">✂️ Grooming</a>
-      <a href="../../services.html#training">🎓 Training</a>
-      <a href="../../services.html#boarding">🏠 Boarding</a>
-      <a href="../../services.html#walking">🦮 Dog Walking</a>
-      <a href="../../services.html#daycare">☀️ Day Care</a>
-      <a href="../../services.html#puppy">🐶 Puppy Care</a>
+      <a href="../services.html#grooming">✂️ Grooming</a>
+      <a href="../services.html#training">🎓 Training</a>
+      <a href="../services.html#boarding">🏠 Boarding</a>
+      <a href="../services.html#walking">🦮 Dog Walking</a>
+      <a href="../services.html#daycare">☀️ Day Care</a>
+      <a href="../services.html#puppy">🐶 Puppy Care</a>
     </div>
     <a href="reservation.html">Reservation</a>
     <a href="testimonials.html" class="active">Testimonials</a>
-    <a href="../../contact.html">Contact Us</a>
+    <a href="../contact.html">Contact Us</a>
     <a href="reservation.html" class="btn btn-primary">📅 Book Now</a>
   </div>
 
@@ -370,22 +120,22 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="../../services.html#grooming">Grooming & Spa</a></li>
-            <li><a href="../../services.html#training">Obedience Training</a></li>
-            <li><a href="../../services.html#boarding">Overnight Boarding</a></li>
-            <li><a href="../../services.html#walking">Dog Walking</a></li>
-            <li><a href="../../services.html#daycare">Day Care</a></li>
-            <li><a href="../../services.html#puppy">Puppy Care</a></li>
+            <li><a href="../services.html#grooming">Grooming & Spa</a></li>
+            <li><a href="../services.html#training">Obedience Training</a></li>
+            <li><a href="../services.html#boarding">Overnight Boarding</a></li>
+            <li><a href="../services.html#walking">Dog Walking</a></li>
+            <li><a href="../services.html#daycare">Day Care</a></li>
+            <li><a href="../services.html#puppy">Puppy Care</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="../../about.html">About Us</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About Us</a></li>
             <li><a href="reservation.html">Book a Service</a></li>
             <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="../../contact.html">Contact Us</a></li>
+            <li><a href="../contact.html">Contact Us</a></li>
           </ul>
         </div>
         <div class="footer-col footer-contact">
@@ -393,14 +143,15 @@
           <p><i class="fa-solid fa-location-dot"></i>123 Bow Trail SW, Calgary, AB T3C 2E8</p>
           <p><i class="fa-solid fa-phone"></i>(403) 555-0147</p>
           <p><i class="fa-solid fa-envelope"></i>hello@happytailscare.ca</p>
-          <a href="../../contact.html" class="btn btn-outline" style="margin-top:1rem;color:#fff;border-color:rgba(255,255,255,.3);">
+          <a href="../contact.html" class="btn btn-outline"
+            style="margin-top:1rem;color:#fff;border-color:rgba(255,255,255,.3);">
             <i class="fa-solid fa-paper-plane"></i> Send a Message
           </a>
         </div>
       </div>
       <div class="footer-bottom">
         <p>© 2025 Happy Tails Dog Care Centre. All rights reserved.</p>
-        <p>Made with ❤️ for dogs everywhere • <a href="../../contact.html">Contact Us</a></p>
+        <p>Made with ❤️ for dogs everywhere • <a href="../contact.html">Contact Us</a></p>
       </div>
     </div>
   </footer>
@@ -411,7 +162,8 @@
       <div class="modal-header">
         <div>
           <h3 id="modalTitle">✍️ Write Your Review</h3>
-          <p style="color:var(--text-light);font-size:.85rem;margin-top:.2rem;">Your review will appear publicly on this page.</p>
+          <p style="color:var(--text-light);font-size:.85rem;margin-top:.2rem;">Your review will appear publicly on this
+            page.</p>
         </div>
         <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
       </div>
@@ -429,7 +181,8 @@
         </div>
 
         <div class="t-form-group">
-          <label>Your Email <span class="req">*</span> <small style="font-weight:400;color:var(--text-light)">(not shown publicly)</small></label>
+          <label>Your Email <span class="req">*</span> <small style="font-weight:400;color:var(--text-light)">(not shown
+              publicly)</small></label>
           <input type="email" class="form-control" id="tEmail" placeholder="jane@email.com" required />
         </div>
 
@@ -461,12 +214,15 @@
             <input type="radio" name="rating" id="s2" value="2"><label for="s2" title="2 stars">★</label>
             <input type="radio" name="rating" id="s1" value="1"><label for="s1" title="1 star">★</label>
           </div>
-          <div id="ratingError" style="color:#c0392b;font-size:.82rem;margin-top:.3rem;display:none;">Please choose a rating.</div>
+          <div id="ratingError" style="color:#c0392b;font-size:.82rem;margin-top:.3rem;display:none;">Please choose a
+            rating.</div>
         </div>
 
         <div class="t-form-group">
           <label>Your Review <span class="req">*</span></label>
-          <textarea class="form-control" id="tText" rows="4" placeholder="Tell us about your experience! What did your dog enjoy? What stood out for you?" maxlength="500" required></textarea>
+          <textarea class="form-control" id="tText" rows="4"
+            placeholder="Tell us about your experience! What did your dog enjoy? What stood out for you?"
+            maxlength="500" required></textarea>
           <div class="char-count"><span id="charCount">0</span> / 500</div>
         </div>
 
@@ -495,99 +251,99 @@
 
   <script src="../js/main.js"></script>
   <script>
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  //  DATA LAYER  (localStorage)
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  const STORAGE_KEY = 'happytails_testimonials';
-  const MAX_PER_PERSON = 3;
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    //  DATA LAYER  (localStorage)
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const STORAGE_KEY = 'happytails_testimonials';
+    const MAX_PER_PERSON = 3;
 
-  const AVATAR_COLORS = [
-    '#C96B2C','#E8A838','#6B8C42','#2C7BE5',
-    '#9B59B6','#27AE60','#E74C3C','#1ABC9C'
-  ];
-
-  // Seed testimonials if empty
-  function seedData() {
-    const existing = loadTestimonials();
-    if (existing.length > 0) return;
-    const seeds = [
-      { id: 'seed1', name: 'Margaret O\'Brien', email: 'mo@seed.com', petName: 'Rosie', service: 'Grooming & Spa', rating: 5, text: 'Rosie came home smelling like a dream and looking absolutely gorgeous. The team at Happy Tails took such great care of her — you could tell they genuinely loved on her the whole time. We\'ll never go anywhere else!', date: '2025-04-18', own: false },
-      { id: 'seed2', name: 'Tyler Nakamura', email: 'tn@seed.com', petName: 'Bruno', service: 'Overnight Boarding', rating: 5, text: 'Leaving Bruno overnight used to terrify me. Not anymore. Happy Tails sent us photos every few hours and Bruno was clearly thriving. He actually whined when we came to pick him up because he didn\'t want to leave!', date: '2025-04-10', own: false },
-      { id: 'seed3', name: 'Priya Sharma', email: 'ps@seed.com', petName: 'Chai', service: 'Obedience Training', rating: 5, text: 'Chai went from an absolute tornado who ignored every command to a well-mannered, confident dog in just 6 sessions. The trainer was patient, knowledgeable, and clearly had a special connection with dogs. So grateful!', date: '2025-03-22', own: false },
-      { id: 'seed4', name: 'Derek Collins', email: 'dc@seed.com', petName: 'Goose', service: 'Dog Walking', rating: 4, text: 'We have a high-energy Vizsla who needs a LOT of exercise. The Happy Tails walkers handle him brilliantly. He comes home happy and tired every time. The GPS reports are a great touch too.', date: '2025-03-05', own: false },
-      { id: 'seed5', name: 'Sophie Beaumont', email: 'sb@seed.com', petName: 'Mochi', service: 'Day Care', rating: 5, text: 'Mochi is a rescue who was quite shy and anxious at first. The staff here were incredibly patient and gentle with her. Three months in, she literally sprints to the door when we pull up. That says it all!', date: '2025-02-14', own: false },
+    const AVATAR_COLORS = [
+      '#C96B2C', '#E8A838', '#6B8C42', '#2C7BE5',
+      '#9B59B6', '#27AE60', '#E74C3C', '#1ABC9C'
     ];
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(seeds));
-  }
 
-  function loadTestimonials() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
-    catch { return []; }
-  }
-
-  function saveTestimonials(arr) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-  }
-
-  function countByEmail(email) {
-    return loadTestimonials().filter(t => t.email.toLowerCase() === email.toLowerCase() && t.own).length;
-  }
-
-  function generateId() {
-    return 'id_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
-  }
-
-  function getAvatarColor(name) {
-    let hash = 0;
-    for (let c of name) hash = (hash * 31 + c.charCodeAt(0)) & 0xffffffff;
-    return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
-  }
-
-  function initials(name) {
-    return name.split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
-  }
-
-  function formatDate(iso) {
-    const d = new Date(iso);
-    return d.toLocaleDateString('en-CA', { year:'numeric', month:'long', day:'numeric' });
-  }
-
-  function renderStars(rating) {
-    let s = '';
-    for (let i = 1; i <= 5; i++) s += `<i class="fa-solid fa-star${i > rating ? ' empty' : ''}"></i>`;
-    return s;
-  }
-
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  //  RENDER
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  let currentFilter = 'all';
-
-  function renderTestimonials() {
-    const all = loadTestimonials();
-    const grid = document.getElementById('testimonialsGrid');
-    const countEl = document.getElementById('resultsCount');
-
-    let filtered = all;
-    if (currentFilter !== 'all') {
-      const num = parseInt(currentFilter);
-      if (!isNaN(num)) filtered = all.filter(t => t.rating === num);
-      else filtered = all.filter(t => t.service === currentFilter);
+    // Seed testimonials if empty
+    function seedData() {
+      const existing = loadTestimonials();
+      if (existing.length > 0) return;
+      const seeds = [
+        { id: 'seed1', name: 'Margaret O\'Brien', email: 'mo@seed.com', petName: 'Rosie', service: 'Grooming & Spa', rating: 5, text: 'Rosie came home smelling like a dream and looking absolutely gorgeous. The team at Happy Tails took such great care of her — you could tell they genuinely loved on her the whole time. We\'ll never go anywhere else!', date: '2025-04-18', own: false },
+        { id: 'seed2', name: 'Tyler Nakamura', email: 'tn@seed.com', petName: 'Bruno', service: 'Overnight Boarding', rating: 5, text: 'Leaving Bruno overnight used to terrify me. Not anymore. Happy Tails sent us photos every few hours and Bruno was clearly thriving. He actually whined when we came to pick him up because he didn\'t want to leave!', date: '2025-04-10', own: false },
+        { id: 'seed3', name: 'Priya Sharma', email: 'ps@seed.com', petName: 'Chai', service: 'Obedience Training', rating: 5, text: 'Chai went from an absolute tornado who ignored every command to a well-mannered, confident dog in just 6 sessions. The trainer was patient, knowledgeable, and clearly had a special connection with dogs. So grateful!', date: '2025-03-22', own: false },
+        { id: 'seed4', name: 'Derek Collins', email: 'dc@seed.com', petName: 'Goose', service: 'Dog Walking', rating: 4, text: 'We have a high-energy Vizsla who needs a LOT of exercise. The Happy Tails walkers handle him brilliantly. He comes home happy and tired every time. The GPS reports are a great touch too.', date: '2025-03-05', own: false },
+        { id: 'seed5', name: 'Sophie Beaumont', email: 'sb@seed.com', petName: 'Mochi', service: 'Day Care', rating: 5, text: 'Mochi is a rescue who was quite shy and anxious at first. The staff here were incredibly patient and gentle with her. Three months in, she literally sprints to the door when we pull up. That says it all!', date: '2025-02-14', own: false },
+      ];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(seeds));
     }
 
-    countEl.textContent = `${filtered.length} review${filtered.length !== 1 ? 's' : ''}`;
+    function loadTestimonials() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+      catch { return []; }
+    }
 
-    if (filtered.length === 0) {
-      grid.innerHTML = `
+    function saveTestimonials(arr) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+    }
+
+    function countByEmail(email) {
+      return loadTestimonials().filter(t => t.email.toLowerCase() === email.toLowerCase() && t.own).length;
+    }
+
+    function generateId() {
+      return 'id_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+    }
+
+    function getAvatarColor(name) {
+      let hash = 0;
+      for (let c of name) hash = (hash * 31 + c.charCodeAt(0)) & 0xffffffff;
+      return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+    }
+
+    function initials(name) {
+      return name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+    }
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function renderStars(rating) {
+      let s = '';
+      for (let i = 1; i <= 5; i++) s += `<i class="fa-solid fa-star${i > rating ? ' empty' : ''}"></i>`;
+      return s;
+    }
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    //  RENDER
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    let currentFilter = 'all';
+
+    function renderTestimonials() {
+      const all = loadTestimonials();
+      const grid = document.getElementById('testimonialsGrid');
+      const countEl = document.getElementById('resultsCount');
+
+      let filtered = all;
+      if (currentFilter !== 'all') {
+        const num = parseInt(currentFilter);
+        if (!isNaN(num)) filtered = all.filter(t => t.rating === num);
+        else filtered = all.filter(t => t.service === currentFilter);
+      }
+
+      countEl.textContent = `${filtered.length} review${filtered.length !== 1 ? 's' : ''}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
         <div class="empty-state">
           <div class="icon">🐾</div>
           <h3>No reviews yet${currentFilter !== 'all' ? ' for this filter' : ''}</h3>
           <p>Be the first to share your experience!</p>
         </div>`;
-      return;
-    }
+        return;
+      }
 
-    grid.innerHTML = filtered.map(t => `
+      grid.innerHTML = filtered.map(t => `
       <div class="t-card reveal" data-id="${t.id}">
         <div class="t-card-header">
           <div class="t-avatar" style="background:${getAvatarColor(t.name)}">${initials(t.name)}</div>
@@ -614,200 +370,201 @@
       </div>
     `).join('');
 
-    // Re-observe for scroll reveal
-    document.querySelectorAll('.t-card.reveal').forEach(el => {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.1 });
-      obs.observe(el);
-    });
-  }
-
-  function escHtml(str) {
-    const d = document.createElement('div');
-    d.textContent = str;
-    return d.innerHTML;
-  }
-
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  //  MODAL
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  const overlay   = document.getElementById('modalOverlay');
-  const tForm     = document.getElementById('testimonialForm');
-  const editIdEl  = document.getElementById('editId');
-  const tName     = document.getElementById('tName');
-  const tEmail    = document.getElementById('tEmail');
-  const tPetName  = document.getElementById('tPetName');
-  const tService  = document.getElementById('tService');
-  const tText     = document.getElementById('tText');
-  const charCount = document.getElementById('charCount');
-  const limitNotice = document.getElementById('limitNotice');
-  const limitCount  = document.getElementById('limitCount');
-
-  function openModal(editId = null) {
-    editIdEl.value = editId || '';
-    if (!editId) {
-      tForm.reset();
-      document.getElementById('modalTitle').textContent = '✍️ Write Your Review';
-      document.getElementById('submitTestimonial').innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Review';
-      charCount.textContent = '0';
-      limitNotice.style.display = 'none';
-    } else {
-      const t = loadTestimonials().find(x => x.id === editId);
-      if (!t) return;
-      document.getElementById('modalTitle').textContent = '✏️ Edit Your Review';
-      document.getElementById('submitTestimonial').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Changes';
-      tName.value    = t.name;
-      tEmail.value   = t.email;
-      tPetName.value = t.petName || '';
-      tService.value = t.service || '';
-      tText.value    = t.text;
-      charCount.textContent = t.text.length;
-      const radio = document.querySelector(`input[name="rating"][value="${t.rating}"]`);
-      if (radio) radio.checked = true;
-      limitNotice.style.display = 'none';
+      // Re-observe for scroll reveal
+      document.querySelectorAll('.t-card.reveal').forEach(el => {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        obs.observe(el);
+      });
     }
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    tName.focus();
-  }
 
-  function closeModal() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+    function escHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
 
-  document.getElementById('openModalBtn').addEventListener('click', () => openModal());
-  document.getElementById('closeModal').addEventListener('click', closeModal);
-  document.getElementById('cancelModal').addEventListener('click', closeModal);
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    //  MODAL
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    const overlay = document.getElementById('modalOverlay');
+    const tForm = document.getElementById('testimonialForm');
+    const editIdEl = document.getElementById('editId');
+    const tName = document.getElementById('tName');
+    const tEmail = document.getElementById('tEmail');
+    const tPetName = document.getElementById('tPetName');
+    const tService = document.getElementById('tService');
+    const tText = document.getElementById('tText');
+    const charCount = document.getElementById('charCount');
+    const limitNotice = document.getElementById('limitNotice');
+    const limitCount = document.getElementById('limitCount');
 
-  // Char counter
-  tText.addEventListener('input', () => charCount.textContent = tText.value.length);
-
-  // Show limit notice when email is entered
-  tEmail.addEventListener('blur', () => {
-    const id = editIdEl.value;
-    if (!id && tEmail.value.trim()) {
-      const used = countByEmail(tEmail.value.trim());
-      if (used > 0) {
-        limitNotice.style.display = 'flex';
-        limitCount.textContent = used;
+    function openModal(editId = null) {
+      editIdEl.value = editId || '';
+      if (!editId) {
+        tForm.reset();
+        document.getElementById('modalTitle').textContent = '✍️ Write Your Review';
+        document.getElementById('submitTestimonial').innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Review';
+        charCount.textContent = '0';
+        limitNotice.style.display = 'none';
       } else {
+        const t = loadTestimonials().find(x => x.id === editId);
+        if (!t) return;
+        document.getElementById('modalTitle').textContent = '✏️ Edit Your Review';
+        document.getElementById('submitTestimonial').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Changes';
+        tName.value = t.name;
+        tEmail.value = t.email;
+        tPetName.value = t.petName || '';
+        tService.value = t.service || '';
+        tText.value = t.text;
+        charCount.textContent = t.text.length;
+        const radio = document.querySelector(`input[name="rating"][value="${t.rating}"]`);
+        if (radio) radio.checked = true;
         limitNotice.style.display = 'none';
       }
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      tName.focus();
     }
-  });
 
-  // Submit / Edit
-  tForm.addEventListener('submit', e => {
-    e.preventDefault();
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
 
-    // Validate
-    let valid = true;
-    if (!tName.value.trim())  { tName.style.borderColor  = '#c0392b'; valid = false; }
-    if (!tEmail.value.trim()) { tEmail.style.borderColor = '#c0392b'; valid = false; }
-    if (!tText.value.trim())  { tText.style.borderColor  = '#c0392b'; valid = false; }
+    document.getElementById('openModalBtn').addEventListener('click', () => openModal());
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    document.getElementById('cancelModal').addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
 
-    const rating = parseInt(document.querySelector('input[name="rating"]:checked')?.value || '0');
-    const ratingErr = document.getElementById('ratingError');
-    if (!rating) { ratingErr.style.display = 'block'; valid = false; }
-    else ratingErr.style.display = 'none';
+    // Char counter
+    tText.addEventListener('input', () => charCount.textContent = tText.value.length);
 
-    if (!valid) { showToast('Please fill in all required fields', '⚠️'); return; }
+    // Show limit notice when email is entered
+    tEmail.addEventListener('blur', () => {
+      const id = editIdEl.value;
+      if (!id && tEmail.value.trim()) {
+        const used = countByEmail(tEmail.value.trim());
+        if (used > 0) {
+          limitNotice.style.display = 'flex';
+          limitCount.textContent = used;
+        } else {
+          limitNotice.style.display = 'none';
+        }
+      }
+    });
 
-    const editId = editIdEl.value;
-    const all    = loadTestimonials();
+    // Submit / Edit
+    tForm.addEventListener('submit', e => {
+      e.preventDefault();
 
-    if (editId) {
-      // Edit
-      const idx = all.findIndex(t => t.id === editId);
-      if (idx !== -1) {
-        all[idx] = {
-          ...all[idx],
-          name:    tName.value.trim(),
+      // Validate
+      let valid = true;
+      if (!tName.value.trim()) { tName.style.borderColor = '#c0392b'; valid = false; }
+      if (!tEmail.value.trim()) { tEmail.style.borderColor = '#c0392b'; valid = false; }
+      if (!tText.value.trim()) { tText.style.borderColor = '#c0392b'; valid = false; }
+
+      const rating = parseInt(document.querySelector('input[name="rating"]:checked')?.value || '0');
+      const ratingErr = document.getElementById('ratingError');
+      if (!rating) { ratingErr.style.display = 'block'; valid = false; }
+      else ratingErr.style.display = 'none';
+
+      if (!valid) { showToast('Please fill in all required fields', '⚠️'); return; }
+
+      const editId = editIdEl.value;
+      const all = loadTestimonials();
+
+      if (editId) {
+        // Edit
+        const idx = all.findIndex(t => t.id === editId);
+        if (idx !== -1) {
+          all[idx] = {
+            ...all[idx],
+            name: tName.value.trim(),
+            petName: tPetName.value.trim(),
+            service: tService.value,
+            rating,
+            text: tText.value.trim()
+          };
+          saveTestimonials(all);
+          showToast('Review updated! ✏️', '✅');
+        }
+      } else {
+        // Check limit
+        const email = tEmail.value.trim().toLowerCase();
+        const used = countByEmail(email);
+        if (used >= MAX_PER_PERSON) {
+          showToast(`You've reached the limit of ${MAX_PER_PERSON} reviews per person.`, '⚠️');
+          return;
+        }
+        all.unshift({
+          id: generateId(),
+          name: tName.value.trim(),
+          email,
           petName: tPetName.value.trim(),
           service: tService.value,
           rating,
-          text:    tText.value.trim()
-        };
+          text: tText.value.trim(),
+          date: new Date().toISOString().split('T')[0],
+          own: true
+        });
         saveTestimonials(all);
-        showToast('Review updated! ✏️', '✅');
+        showToast('Thank you for your review! 🌟', '⭐');
       }
-    } else {
-      // Check limit
-      const email = tEmail.value.trim().toLowerCase();
-      const used  = countByEmail(email);
-      if (used >= MAX_PER_PERSON) {
-        showToast(`You've reached the limit of ${MAX_PER_PERSON} reviews per person.`, '⚠️');
-        return;
-      }
-      all.unshift({
-        id:      generateId(),
-        name:    tName.value.trim(),
-        email,
-        petName: tPetName.value.trim(),
-        service: tService.value,
-        rating,
-        text:    tText.value.trim(),
-        date:    new Date().toISOString().split('T')[0],
-        own:     true
-      });
-      saveTestimonials(all);
-      showToast('Thank you for your review! 🌟', '⭐');
-    }
 
-    closeModal();
-    renderTestimonials();
-  });
+      closeModal();
+      renderTestimonials();
+    });
 
-  // Clear red borders on input
-  [tName, tEmail, tText].forEach(el => el.addEventListener('input', () => el.style.borderColor = ''));
+    // Clear red borders on input
+    [tName, tEmail, tText].forEach(el => el.addEventListener('input', () => el.style.borderColor = ''));
 
-  // ── Edit ─────────────────────────────────
-  window.openEdit = id => openModal(id);
+    // ── Edit ─────────────────────────────────
+    window.openEdit = id => openModal(id);
 
-  // ── Delete ───────────────────────────────
-  let pendingDeleteId = null;
-  const confirmOverlay = document.getElementById('confirmOverlay');
+    // ── Delete ───────────────────────────────
+    let pendingDeleteId = null;
+    const confirmOverlay = document.getElementById('confirmOverlay');
 
-  window.confirmDelete = id => {
-    pendingDeleteId = id;
-    confirmOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
+    window.confirmDelete = id => {
+      pendingDeleteId = id;
+      confirmOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
 
-  document.getElementById('confirmCancel').addEventListener('click', () => {
-    pendingDeleteId = null;
-    confirmOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-
-  document.getElementById('confirmDelete').addEventListener('click', () => {
-    if (pendingDeleteId) {
-      const updated = loadTestimonials().filter(t => t.id !== pendingDeleteId);
-      saveTestimonials(updated);
+    document.getElementById('confirmCancel').addEventListener('click', () => {
       pendingDeleteId = null;
       confirmOverlay.classList.remove('open');
       document.body.style.overflow = '';
-      renderTestimonials();
-      showToast('Review deleted.', '🗑️');
-    }
-  });
-
-  // ── Filter tabs ──────────────────────────
-  document.querySelectorAll('.filter-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      currentFilter = tab.dataset.filter;
-      renderTestimonials();
     });
-  });
 
-  // ── Init ─────────────────────────────────
-  seedData();
-  renderTestimonials();
+    document.getElementById('confirmDelete').addEventListener('click', () => {
+      if (pendingDeleteId) {
+        const updated = loadTestimonials().filter(t => t.id !== pendingDeleteId);
+        saveTestimonials(updated);
+        pendingDeleteId = null;
+        confirmOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+        renderTestimonials();
+        showToast('Review deleted.', '🗑️');
+      }
+    });
+
+    // ── Filter tabs ──────────────────────────
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentFilter = tab.dataset.filter;
+        renderTestimonials();
+      });
+    });
+
+    // ── Init ─────────────────────────────────
+    seedData();
+    renderTestimonials();
   </script>
 </body>
+
 </html>
